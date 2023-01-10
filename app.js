@@ -10,14 +10,14 @@ const server = http.createServer((req, res) => {
     console.log('Server request');
     console.log(req.url, req.method);
 
-    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Content-Type', 'application/json');
 
-    //Ответ
-    res.write('<head><link rel="stylesheet" href="#"></head>')
+    const data = JSON.stringify ([
+        {name: 'Artyom', age: 19},
+        {name: 'Pavel', age: 25}
+    ]);
 
-    res.write('<h1>Hello world!</h1>');
-    res.write('<p>My name is Galus</p>');
-    res.end();
+    res.end(data);
 });
 
 //Создание хоста
